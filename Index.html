@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Preguntitaaas diariaas ✨ </title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins", Helvetica, sans-serif;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.intro{
+    width:90%;
+    margin:0 auto 30px;
+    line-height:1.8;
+    color:#f2f2f2;
+}
+
+body{
+    background-image:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("https://i.pinimg.com/originals/de/28/6f/de286fcfa956a9e89cfbdd5e7464c57d.gif");
+    background-size: cover;
+    background-position: center;
+    color:white;
+    margin: 0;
+    padding: 60px;          
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-sizing:border-box;
+     
+    
+}
+.container{
+     width:750px;
+    max-width:80%;
+    min-height:300px;
+    padding:30px;
+    margin:auto;
+        background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+h1{
+    margin-bottom:20px;
+
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    border-radius:12px;
+    padding:14px 22px;
+    margin:8px;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.verde{background: #7CDF90;color:white; animation: respirar 2s infinite;}
+.amarillo{background: #FFE75C; color: white; animation: respirar 2s infinite;}
+.rojo{background:#FC5F67;color:white; animation: respirar 2s infinite;}
+
+
+
+#gatogojo{
+    width:150px;
+    height:auto;
+    margin:20px 10px 30px 40px;
+    animation: flotar 2.5s ease-in-out infinite;
+}
+
+#dado{
+    display:none;
+    margin:25px auto;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+#gifDado{
+    width:35px;
+    height:auto;
+}
+#gifpregunta{
+    width:35px;
+    height:auto;
+}
+#dado{
+    background:white;
+    color:#333;
+    display:none;
+    animation: respirar 2s infinite;
+}
+
+#card{
+    display:none;
+    margin-top:25px;
+    background:white;
+    color:#333;
+    border-radius:20px;
+    padding:30px;
+    animation: zoom .5s ease, aparecer .6s ease;
+}
+
+#pregunta{
+    font-size:22px;
+    margin:25px 0;
+}
+
+#next{
+    display:none;
+    margin:25px auto 0;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#6c63ff;
+    color:white;
+    animation: brillo 2s infinite;
+}
+
+.progress{
+
+    width:100%;
+    height:8px;
+    background:rgba(255,255,255,.12);
+    border-radius:20px;
+    overflow:hidden;
+    margin:25px 0;
+
+}
+
+.progress-fill{
+    width:25%;
+    height:100%;
+    background:linear-gradient(90deg,#4cc9f0,#6a5acd);
+    transition:width .8s ease;
+
+}
+
+#contador{
+    margin-top:15px;
+    color:#666;
+}
+
+
+
+
+
+@keyframes aparecer {
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes flotar{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes respirar{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.05);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+@keyframes brillo{
+
+    0%{
+        box-shadow:0 0 5px rgba(120,150,255,.2);
+    }
+
+    50%{
+        box-shadow:0 0 25px rgba(120,150,255,.8);
+    }
+
+    100%{
+        box-shadow:0 0 5px rgba(120,150,255,.2);
+    }
+
+}
+
+@keyframes zoom{
+
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+@keyframes flotarBoton{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+
+</style>
+
+</head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<body>
+
+   <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+
+<div class="container">
+
+<h1>Preguntitas del día ✨</h1>
+
+<p class="intro">Holi mi amor bonito, un nuevo dia de preguntitas para saber como te fue en tu día. <br>
+   <br><br>Sabes que siempre estare aqui para ti. Se qué expresar tus emociones diariamente puede ser un poquito dificil, por lo que invente esta forma para que lo sientas más ameno y no tanto metodico, ya despues seguimos con una dinamica máaas. ✨ </subtitle>
+<br><br> </p>
+
+<p>¿Cómo estuvo tu día?</p>
+
+<button class="verde" onclick="seleccionar('verde')"> 💚Verde</button>
+
+<button class="amarillo" onclick="seleccionar('amarillo')">💛 Amarillo</button>
+
+<button class="rojo" onclick="seleccionar('rojo')">❤️ Rojo</button>
+
+<br>
+<img src="https://custom-doodle.com/wp-content/uploads/doodle/auto-draft/satoru-gojo-dancing-cat-doodle.gif" id="gatogojo">
+
+<button id="dado" onclick="generar()">
+     <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHR5YzVvcTduZWdjajZlN3dyaTQ4djlrZGR3ZWh2cTkyNG92NWd0NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Al9XitEIwGgLU9yMfS/giphy.gif" id="gifDado">
+     Expandir dominio</button>
+
+<div id="card">
+
+    <div id="contador"></div>
+
+    <div class="progress">
+        <div class="progress-fill" id="barra"></div>
+    </div>
+
+    <div id="pregunta"></div>
+
+    <button id="next" onclick="siguiente()">
+        <img src="https://66.media.tumblr.com/tumblr_m9worzpyKn1rfjowdo1_500.gif" id="gifpregunta">
+        Revelar la siguiente técnica
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+let color="";
+
+let preguntas=[];
+let indice=0;
+
+const banco = {
+
+verde: [
+
+"¿Qué fue lo mejor que te pasó hoy?",
+"¿Qué te hizo sonreír hoy?",
+"¿Qué emoción predominó durante tu día?",
+"¿Qué repetirías de este día?",
+"¿Qué aprendiste hoy?",
+"¿Qué te hizo sentir orgulloso?",
+"¿Quién alegró tu día?",
+"¿Qué entrenaste hoy en el gimnasio?",
+"¿Qué fue lo más rico que comiste hoy?",
+"¿Tomaste suficiente agüita hoy?",
+"¿Qué canción describiría tu día?",
+"¿Qué pequeño detalle hizo tu día más bonito?",
+"¿Hice algo para que tu díafuera más bonito?",
+"¿Qué momento guardarías como recuerdo de este día?",
+"¿Qué agradeces de hoy?"
+
+],
+
+amarillo: [
+
+"¿Cómo te sentiste la mayor parte del día?",
+"¿Qué fue lo que más energía te quitó?",
+"¿Hay algo que siga dando vueltas en tu cabeza?",
+"¿Qué fue lo más difícil del día?",
+"¿Necesitas que te ayude con algo?",
+"¿Qué aprendiste de este día?",
+"¿Qué habría mejorado tu día?",
+"¿Qué emoción apareció más veces?",
+"¿Entrenaste hoy o preferiste descansar?",
+"¿Cómo estuvo tu ansiedad hoy?",
+"¿Te sentiste con la misma energía de siempre para entrenar?",
+"¿Comiste bien durante el día?",
+"¿Sentiste que te faltó energía en algún momento?",
+"¿Qué fue lo más dificil del trabajo hoy?",
+"¿Qué tarea te tomó más tiempo de lo esperado?",
+"¿Hubo algo que te frustró un poquito?",
+"¿Qué fue lo más inesperado que pasó hoy?",
+"¿Qué te hubiera gustado hacer diferente?",
+"¿Qué necesitas para que mañana sea un mejor día?",
+"¿Qué puedo hacer para que tu día mejore?",
+],
+
+rojo: [
+
+"¿Qué fue lo más pesado del día?",
+"¿Qué necesitas de mí esta noche?",
+"¿Prefieres que te escuche o que te aconseje?",
+"¿Qué emoción sentiste con más fuerza hoy?",
+"¿Qué pasó para sentirte así?",
+"¿Hay algo que no hayas podido sacar de tu cabeza?",
+"¿Qué puedo hacer por ti esta noche?",
+"¿Hay algo que quieras contarme y aún no hayas dicho?",
+"¿Pudiste comer bien hoy?",
+"¿Qué fue lo que más agotó tu energía hoy?",
+"¿Qué fue lo que más te frustró?",
+"¿Hubo algo que te hizo sentir mal?",
+"¿Qué te hubiera gustado escuchar hoy?",
+"¿Qué necesitas para terminar este día un poquito más tranquilo?",
+"¿Hay algo que necesitas que te ayude a dejar atrás antes de dormir?",
+"¿Cómo puedo acompañarte mejor hoy?",
+"¿Qué necesitas para empezar mañana con otra energía?"
+]
+
+};
+
+function seleccionar(c){
+
+color=c;
+document.getElementById("musica").play();
+const musica = document.getElementById("musica");
+musica.volume = 0.25;
+musica.play();
+  document.getElementById("dado").style.display="flex";
+  document.getElementById("gatogojo").style.display = "none";
+}
+
+function generar(){
+    document.getElementById("card").style.display = "block";
+document.getElementById("next").style.display = "flex";
+
+mostrarPregunta();
+    document.getElementById("dado").style.display = "none";
+preguntas=[];
+
+indice=0;
+
+let copia=[...banco[color]];
+
+while(preguntas.length<4){
+
+let r=Math.floor(Math.random()*copia.length);
+
+preguntas.push(copia.splice(r,1)[0]);
+
+}
+
+document.getElementById("card").style.display="block";
+
+mostrarPregunta();
+
+}
+function escribir(texto){
+
+    let i = 0;
+    let elemento = document.getElementById("pregunta");
+    elemento.innerHTML = "";
+    let intervalo = setInterval(function(){
+        elemento.innerHTML += texto.charAt(i);
+
+        i++;
+
+        if(i >= texto.length){
+            clearInterval(intervalo);
+        }
+
+    },40);
+
+}
+function mostrarPregunta(){
+
+escribir(preguntas[indice]);
+document.getElementById("contador").innerHTML=
+`Pregunta ${indice+1} de ${preguntas.length}`;
+
+document.getElementById("barra").style.width =
+((indice + 1) / preguntas.length * 100) + "%";
+
+if(indice==preguntas.length-1){
+
+document.getElementById("next").innerHTML="Listooo. ";
+
+}
+
+}
+
+function siguiente(){
+
+indice++;
+
+if(indice<preguntas.length){
+
+mostrarPregunta();
+
+}else{
+
+document.getElementById("card").innerHTML=
+
+`<h2> Te quiero muchooo 💛</h2>
+
+<br>
+
+<p>Gracias por abrir tu corazoncito y contarme sobre tu día. 💛</p>
+
+<br>
+
+<button onclick="location.reload()">
+
+Volver a empezar
+
+</button>`;
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
