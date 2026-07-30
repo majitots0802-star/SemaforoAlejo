@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -421,23 +421,33 @@ document.getElementById("card").style.display="block";
 mostrarPregunta();
 
 }
+
 function escribir(texto){
 
-    let i = 0;
-    let elemento = document.getElementById("pregunta");
-    elemento.innerHTML = "";
-    let intervalo = setInterval(function(){
-        elemento.innerHTML += texto.charAt(i);
+   
+    if(intervaloEscritura){
+        clearInterval(intervaloEscritura);
+    }
 
+    let i = 0;
+    const elemento = document.getElementById("pregunta");
+    elemento.innerHTML = "";
+
+    intervaloEscritura = setInterval(function(){
+
+        elemento.innerHTML += texto.charAt(i);
         i++;
 
         if(i >= texto.length){
-            clearInterval(intervalo);
+            clearInterval(intervaloEscritura);
+            intervaloEscritura = null;
         }
 
-    },40);
+    }, 40);
 
 }
+
+
 function mostrarPregunta(){
 
 escribir(preguntas[indice]);
