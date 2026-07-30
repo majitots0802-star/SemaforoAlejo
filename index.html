@@ -315,6 +315,7 @@ let color="";
 
 let preguntas=[];
 let indice=0;
+let intervaloEscritura = null;
 
 const banco = {
 
@@ -388,7 +389,6 @@ rojo: [
 function seleccionar(c){
 
 color=c;
-document.getElementById("musica").play();
 const musica = document.getElementById("musica");
 musica.volume = 0.25;
 musica.play();
@@ -397,50 +397,47 @@ musica.play();
 }
 
 function generar(){
-    document.getElementById("card").style.display = "block";
-document.getElementById("next").style.display = "flex";
 
-mostrarPregunta();
     document.getElementById("dado").style.display = "none";
-preguntas=[];
 
-indice=0;
+    preguntas = [];
+    indice = 0;
 
-let copia=[...banco[color]];
+    let copia = [...banco[color]];
 
-while(preguntas.length<4){
+    while(preguntas.length < 4){
+        let r = Math.floor(Math.random()*copia.length);
+        preguntas.push(copia.splice(r,1)[0]);
+    }
 
-let r=Math.floor(Math.random()*copia.length);
+    document.getElementById("card").style.display = "block";
+    document.getElementById("next").style.display = "flex";
 
-preguntas.push(copia.splice(r,1)[0]);
-
-}
-
-document.getElementById("card").style.display="block";
-
-mostrarPregunta();
-
+    mostrarPregunta();
 }
 
 function escribir(texto){
 
+   
+    if(intervaloEscritura){
+        clearInterval(intervaloEscritura);
+    }
 
     let i = 0;
-    let elemento = document.getElementById("pregunta");
+    const elemento = document.getElementById("pregunta");
     elemento.innerHTML = "";
-    let intervalo = setInterval(function(){
-        elemento.innerHTML += texto.charAt(i);
 
+    intervaloEscritura = setInterval(function(){
+
+        elemento.innerHTML += texto.charAt(i);
         i++;
 
         if(i >= texto.length){
-            clearInterval(intervalo);
+            clearInterval(intervaloEscritura);
+            intervaloEscritura = null;
         }
 
-    },40);
-    
-
-}
+    }, 40);
 
 }
 
