@@ -424,26 +424,23 @@ mostrarPregunta();
 
 function escribir(texto){
 
-   
-    if(intervaloEscritura){
-        clearInterval(intervaloEscritura);
-    }
 
     let i = 0;
-    const elemento = document.getElementById("pregunta");
+    let elemento = document.getElementById("pregunta");
     elemento.innerHTML = "";
-
-    intervaloEscritura = setInterval(function(){
-
+    let intervalo = setInterval(function(){
         elemento.innerHTML += texto.charAt(i);
+
         i++;
 
         if(i >= texto.length){
-            clearInterval(intervaloEscritura);
-            intervaloEscritura = null;
+            clearInterval(intervalo);
         }
 
-    }, 40);
+    },40);
+    
+
+}
 
 }
 
