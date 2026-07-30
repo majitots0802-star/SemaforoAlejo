@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -261,9 +261,10 @@ button:hover{
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <body>
-    
-<audio id="musica" loop>
+
+   <audio id="musica" loop>
     <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
 </audio>
 
 <div class="container">
@@ -387,7 +388,10 @@ rojo: [
 function seleccionar(c){
 
 color=c;
-    
+document.getElementById("musica").play();
+const musica = document.getElementById("musica");
+musica.volume = 0.25;
+musica.play();
   document.getElementById("dado").style.display="flex";
   document.getElementById("gatogojo").style.display = "none";
 }
