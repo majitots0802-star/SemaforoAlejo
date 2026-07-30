@@ -262,9 +262,13 @@ button:hover{
 
 <body>
     
-<audio id="musica" controls>
+<audio id="musica" loop>
     <source src="musica.mp4" type="audio/mp4">
 </audio>
+
+<button onclick="document.getElementById('musica').play()">
+🎵 Reproducir música
+</button>
 
 <div class="container">
 
